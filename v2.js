@@ -1,15 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     let texto = "☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐";
+    let texto1 = "☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐ ☐☐";
     let words = texto.split(' ');
     const textElement = document.getElementById('text');
 
     //recria o conteúdo com <span> e adiciona quebra de linha a cada quatro palavras.
+    let conf = [[2, 4],[3, 6]];
+    let use =  conf[0];
     let formattedText = '';
     for (let i = 0; i < words.length; i++) {
         let wordSpan = `<span>${words[i]}</span>`;
-        if ((i + 1) % 2 === 0 && i !== words.length - 1) {
+        if ((i + 1) % use[0] === 0 && i !== words.length - 1) {
             wordSpan += 'ㅤ';
-        } if ((i + 1) % 4 === 0 && i !== words.length - 1) {
+        } if ((i + 1) % use[1] === 0 && i !== words.length - 1) {
             wordSpan += '<br>';
         } else {
             wordSpan += ' ';
