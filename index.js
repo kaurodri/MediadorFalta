@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let textElement = document.getElementById('text');
-    let words = textElement.innerText.split(' ');
+    let texto = "☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐";
+    let words = texto.split(' ');
+    const textElement = document.getElementById('text');
 
     //recria o conteúdo com <span> e adiciona quebra de linha a cada quatro palavras.
     let formattedText = '';
