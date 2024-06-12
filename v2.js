@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const Mapeamento = {
                 '☐☐': { novoTexto: '☒☒', novaClasse: 'red' },
                 '☒☒': { novoTexto: '☑☑', novaClasse: 'green' },
-                '☑☑': { novoTexto: '◫◫', novaClasse: 'blue' },
-                '◫◫': { novoTexto: '☐☐', novaClasse: '' }
+                '☑☑': { novoTexto: '☐◫', novaClasse: 'blue' },
+                '☐◫': { novoTexto: '☐☐', novaClasse: '' }
             };
 
             //texto atual do elemento clicado.
