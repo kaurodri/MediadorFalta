@@ -17,9 +17,22 @@ export function DesenhaMarcadores(texto, chave) {
             wordSpan += ' ';
         }
 
+        const Mapeamento = {
+            '☐☐': { cor: '' },
+            '☒☒': { cor: 'red' },
+            '☑☑': { cor: 'green' },
+            '☐◫': { cor: 'blue' }
+        };
+
+        let cores = Mapeamento[words[i]].cor
+
         //a cada 2 palavras, as próximas 2 palavras têm a cor diferente.
-        if (i % 2 === 1) {
+        if (i % 2 === 1 && words[i] === '☐☐') {
             wordSpan = wordSpan.replace('<span>', '<span class="gray original-gray">');
+        } else if (i % 2 === 1 && words[i] != '☐☐') {
+            wordSpan = wordSpan.replace('<span>', '<span class="'+cores+' original-gray">');
+        } else {
+            wordSpan = wordSpan.replace('<span>', '<span class="'+cores+'">');
         }
 
         formattedText += wordSpan;
