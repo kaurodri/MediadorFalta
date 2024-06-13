@@ -5,7 +5,7 @@ export function Simular() {
     //'1-909090909090'
     //'0-90909090'
     //'0-9292921022202220'
-    let entrada = `0-${document.getElementById('entrada').value}`;
+    let entrada = document.getElementById('entrada').value;
     let chave = entrada.split('-');
     let texto = ConverteEntrada(chave[1]);
     DesenhaMarcadores(texto, chave);
