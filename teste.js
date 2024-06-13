@@ -1,9 +1,15 @@
-export function Marcadores(texto, chave) {
+import { convertEntrada } from './convertEntrada.js';
+
+export function Simular() {
+    let zz = document.getElementById('entrada').value;
+    let entrada = `0-${zz}`;
+    let chave = entrada.split('-');
+    let texto = convertEntrada(chave[1]);
 
     let words = texto.split(' ');
     const textElement = document.getElementById('text');
 
-    //recria o conteúdo com <span> e adiciona quebra de linha a cada quatro palavras.
+    // recria o conteúdo com <span> e adiciona quebra de linha a cada quatro palavras.
     let conf = [[2, 4], [3, 6]];
     let use = conf[Number(chave[0])];
     let formattedText = '';
@@ -17,7 +23,7 @@ export function Marcadores(texto, chave) {
             wordSpan += ' ';
         }
 
-        //a cada 2 palavras, as próximas 2 palavras têm a cor diferente.
+        // a cada 2 palavras, as próximas 2 palavras têm a cor diferente.
         if (i % 2 === 1) {
             wordSpan = wordSpan.replace('<span>', '<span class="gray original-gray">');
         }
@@ -29,7 +35,6 @@ export function Marcadores(texto, chave) {
 
     textElement.addEventListener('click', (event) => {
         if (event.target.tagName === 'SPAN') {
-
             const Mapeamento = {
                 '☐☐': { novoTexto: '☒☒', novaClasse: 'red' },
                 '☒☒': { novoTexto: '☑☑', novaClasse: 'green' },
@@ -37,25 +42,32 @@ export function Marcadores(texto, chave) {
                 '☐◫': { novoTexto: '☐☐', novaClasse: '' }
             };
 
-            //texto atual do elemento clicado.
+            // texto atual do elemento clicado.
             const elementoTexto = event.target.innerText;
             const mapeando = Mapeamento[elementoTexto];
 
-            //remove as classes.
+            // remove as classes.
             event.target.classList.remove('red', 'green', 'gray', 'blue');
 
-            //adiciona a nova classe se no mapeamento não estiver vazia.
+            // adiciona a nova classe se no mapeamento não estiver vazia.
             if (mapeando.novaClasse) {
                 event.target.classList.add(mapeando.novaClasse);
             }
 
-            //volta o elemento para sua cor de origem.
+            // volta o elemento para sua cor de origem.
             if (elementoTexto === '◫◫' && event.target.classList.contains('original-gray')) {
                 event.target.classList.add('gray');
             }
 
-            //altera o texto do elemento.
+            // altera o texto do elemento.
             event.target.innerText = mapeando.novoTexto;
         }
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const entradaElement = document.getElementById('entrada');
+    entradaElement.addEventListener('change', Simular);
+
+    Simular(); // Executa a função ao carregar a página inicialmente
+});
