@@ -16,7 +16,8 @@ body {
 }
 
 .quadri {
-    width: 195px;
+    /* width: 195px; */
+    width: 280px;
     height: 300px;
     border: 1px solid #ccc;
     padding-left: 20px;

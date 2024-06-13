@@ -3,16 +3,17 @@ import { convertEntrada } from './convertEntrada.js';
 document.addEventListener('DOMContentLoaded', () => {
 
     //let entrada = document.getElementById('entrada').value;
-    //let entrada = '000000000000000000000000000000000000000000000000000000';
-    let entrada = '000000000000000000000000000000000000';
-    let texto = convertEntrada(entrada);
+    //let entrada = '1-909090909090';
+    let entrada = '0-90909090';
+    let chave = entrada.split('-');
+    let texto = convertEntrada(chave[1]);
 
     let words = texto.split(' ');
     const textElement = document.getElementById('text');
 
     //recria o conteúdo com <span> e adiciona quebra de linha a cada quatro palavras.
     let conf = [[2, 4], [3, 6]];
-    let use = conf[0];
+    let use = conf[Number(chave[0])];
     let formattedText = '';
     for (let i = 0; i < words.length; i++) {
         let wordSpan = `<span>${words[i]}</span>`;

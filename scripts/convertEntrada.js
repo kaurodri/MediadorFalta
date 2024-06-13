@@ -8,16 +8,30 @@ export function convertEntrada(texto) {
         '3': '☐◫'
     };
 
-    // Percorre cada caractere do input
-    for (let i = 0; i < texto.length; i++) {
-        let char = texto.charAt(i);
-        if (map[char]) {
-            //adiciona o símbolo correspondente à variável de resultado, seguido de um espaço
-            resultado += map[char] + ' ';
+    //percorre a string em pares de caracteres.
+    for (let i = 0; i < texto.length; i += 2) {
+        //lê os dois caracteres.
+        let par = texto.substr(i, 2);
+
+        if (par.length === 2) { //verifica se temos um par completo.
+            let num = parseInt(par.charAt(0));
+            let char = par.charAt(1);
+            if (map[char]) {
+                //repete o símbolo 'num' vezes e adiciona ao resultado.
+                for (let j = 0; j < num; j++) {
+                    resultado += map[char];
+                }
+            }
         }
     };
 
-    resultado = resultado.trim(); //remove o espaço extra no final da string
+    function Separar(str) {
+        let resultado = '';
+        for (let i = 0; i < str.length; i += 2) {
+            resultado += str.substr(i, 2) + ' ';
+        }
+        return resultado.trim();
+    }
 
-    return resultado;
+    return Separar(resultado);
 }
