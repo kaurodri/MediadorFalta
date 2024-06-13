@@ -1,4 +1,4 @@
-export function Marcadores(texto, chave) {
+export function DesenhaMarcadores(texto, chave) {
 
     let words = texto.split(' ');
     const textElement = document.getElementById('text');

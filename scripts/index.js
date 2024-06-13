@@ -1,5 +1,5 @@
-import { convertEntrada } from './convertEntrada.js';
-import { Marcadores } from './marcadores.js';
+import { ConverteEntrada } from './converte.js';
+import { DesenhaMarcadores } from './marcadores.js';
 
 export function Simular() {
     //'1-909090909090'
@@ -7,8 +7,8 @@ export function Simular() {
     //'0-9292921022202220'
     let entrada = `0-${document.getElementById('entrada').value}`;
     let chave = entrada.split('-');
-    let texto = convertEntrada(chave[1]);
-    Marcadores(texto, chave);
+    let texto = ConverteEntrada(chave[1]);
+    DesenhaMarcadores(texto, chave);
 }
 
 document.addEventListener('DOMContentLoaded', () => {

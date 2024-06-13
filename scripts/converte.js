@@ -1,4 +1,4 @@
-export function convertEntrada(texto) {
+export function ConverteEntrada(texto) {
     let resultado = '';
 
     const map = {
