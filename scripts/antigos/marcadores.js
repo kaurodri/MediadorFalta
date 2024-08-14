@@ -1,54 +1,6 @@
-export function DesenhaMarcadores(texto, chave, marcadores) {
+export function DesenhaMarcadores(texto, chave) {
 
-    let aulaSemana = Number(chave[0][1]);
     let words = texto.split(' ');
-    const textElement = document.getElementById('text');
-
-    let conf = [[1, 3],[2, 4], [3, 6]];
-    let use = conf[aulaSemana-1];
-    
-    let formattedText = '';
-    for (let i = 0; i < words.length; i++) {
-        let ma = marcadores;
-        let wordSpan = ma.split(' ')[i];
-
-        const Mapeamento = {
-            '☐': { cor: '' },
-            '☒': { cor: 'red' },
-            '☑': { cor: 'green' },
-            '◫': { cor: 'blue' }
-        };
-
-        let cores = Mapeamento[words[i].split('')[1]].cor
-
-        const reg = /<span>.*<\/span>/g;
-
-        //divisória de aulas por semana
-        if (i % aulaSemana === 0) {
-            wordSpan = wordSpan.replace('<span>', 'ㅤ<span>');
-        }
-        
-        //a cada 2 palavras, as próximas 2 palavras têm a cor diferente.
-        if (i % 2 === 1 && words[i].split('')[1] === '☐') {
-            wordSpan = wordSpan.replace('<span>', '<span class="gray original-gray">');
-        } else if (i % 2 === 1 && words[i].split('')[1] != '☐') {
-            wordSpan = wordSpan.replace('<span>', '<span class="' + cores + ' original-gray">');
-        } else {
-            wordSpan = wordSpan.replace('<span>', '<span class="' + cores + '">');
-        }
-
-        formattedText += wordSpan;
-    }
-
-
-
-
-    textElement.innerHTML = formattedText;
-
-}
-
-/*
-let words = texto.split(' ');
     const textElement = document.getElementById('text');
 
     //recria o conteúdo com <span> e adiciona quebra de linha a cada quatro palavras.
@@ -119,5 +71,4 @@ let words = texto.split(' ');
             event.target.innerText = mapeando.novoTexto;
         }
     });
-
-*/
+}

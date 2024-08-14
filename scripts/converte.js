@@ -1,12 +1,37 @@
-export function ConverteEntrada(texto) {
+export function ConverteEntrada(chave) {
+
+    let ch = chave[0].split('');
+    //aula no dia
+    let xx = Number(ch[0])
+    //aula na semana
+    let xy = Number(ch[1])
+
+    let texto = chave[1]
+
     let resultado = '';
 
-    const map = {
+    const map1 = {
+        '0': '☐',
+        '1': '☒',
+        '2': '☑',
+        '3': '◫'
+    }, map2 = {
         '0': '☐☐',
         '1': '☒☒',
         '2': '☑☑',
         '3': '☐◫'
+    }, map3 = {
+        '0': '☐☐☐',
+        '1': '☒☒☒',
+        '2': '☑☑☑',
+        '3': '☐◫◫'
     };
+
+    const indice = {
+        1: map1,
+        2: map2,
+        3: map3
+    }
 
     //percorre a string em pares de caracteres.
     for (let i = 0; i < texto.length; i += 2) {
@@ -16,22 +41,42 @@ export function ConverteEntrada(texto) {
         if (par.length === 2) { //verifica se temos um par completo.
             let num = parseInt(par.charAt(0));
             let char = par.charAt(1);
-            if (map[char]) {
+            if (indice[xx][char]) {
                 //repete o símbolo 'num' vezes e adiciona ao resultado.
                 for (let j = 0; j < num; j++) {
-                    resultado += map[char];
+                    resultado += indice[xx][char];
                 }
             }
         }
     };
 
-    function Separar(str) {
-        let resultado = '';
-        for (let i = 0; i < str.length; i += 2) {
-            resultado += str.substr(i, 2) + ' ';
+    if (xx == 2) {
+
+        function Separar(str) {
+            let resultado = '';
+            for (let i = 0; i < str.length; i += 2) {
+                resultado += str.substr(i, 2) + ' ';
+            }
+            return resultado.trim();
         }
-        return resultado.trim();
+
+        return Separar(resultado);
     }
 
-    return Separar(resultado);
+    if (xx == 3) {
+
+        function Separar(str) {
+            let resultado = '';
+            for (let i = 0; i < str.length; i += 3) {
+                resultado += str.substr(i, 3) + ' ';
+            }
+            return resultado.trim();
+        }
+
+        return Separar(resultado);
+    }
+
+
+
+    
 }

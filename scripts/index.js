@@ -1,14 +1,18 @@
 import { ConverteEntrada } from './converte.js';
+import { organizarMarcadores } from './organizar.js';
 import { DesenhaMarcadores } from './marcadores.js';
 
 export function Simular() {
-    //'1-909090909090'
-    //'0-90909090'
-    //'0-9292921022202220'
     let entrada = document.getElementById('entrada').value;
     let chave = entrada.split('-');
-    let texto = ConverteEntrada(chave[1]);
-    DesenhaMarcadores(texto, chave);
+
+    let texto = ConverteEntrada(chave)
+    organizarMarcadores(texto, chave);
+    
+    let marcadores = organizarMarcadores(texto, chave);
+    DesenhaMarcadores(texto, chave, marcadores);
+    //23-32302213909090
+    //31-1112136090
 }
 
 document.addEventListener('DOMContentLoaded', () => {
