@@ -11,8 +11,6 @@ export function Simular() {
     
     let marcadores = organizarMarcadores(texto, chave);
     DesenhaMarcadores(texto, chave, marcadores);
-    //23-32302213909090
-    //31-1112136090
 }
 
 document.addEventListener('DOMContentLoaded', () => {
