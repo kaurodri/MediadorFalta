@@ -3,10 +3,12 @@ import { organizarMarcadores } from './organizar.js';
 import { DesenhaMarcadores } from './marcadores.js';
 
 export function Simular() {
+    let horas = 60;
     let entrada = document.getElementById('entrada').value;
     let chave = entrada.split('-');
 
-    let texto = ConverteEntrada(chave)
+    let texto = ConverteEntrada(chave, horas)
+
     organizarMarcadores(texto, chave);
     
     let marcadores = organizarMarcadores(texto, chave);

@@ -1,10 +1,11 @@
-export function ConverteEntrada(chave) {
+export function ConverteEntrada(chave, horas) {
+
+    let aulas = (horas * 60) / 50 //72
+    let faltas = (aulas * 25) / 100; //18
 
     let ch = chave[0].split('');
-    //aula no dia
-    let xx = Number(ch[0])
-    //aula na semana
-    let xy = Number(ch[1])
+
+    let aulas_dia = Number(ch[0]) //aula no dia
 
     let texto = chave[1]
 
@@ -41,16 +42,43 @@ export function ConverteEntrada(chave) {
         if (par.length === 2) { //verifica se temos um par completo.
             let num = parseInt(par.charAt(0));
             let char = par.charAt(1);
-            if (indice[xx][char]) {
+            if (indice[aulas_dia][char]) {
                 //repete o símbolo 'num' vezes e adiciona ao resultado.
                 for (let j = 0; j < num; j++) {
-                    resultado += indice[xx][char];
+                    resultado += indice[aulas_dia][char];
                 }
             }
         }
     };
 
-    if (xx == 2) {
+   
+    //contagem aulas que já faltou.
+    let contagem = 0;
+    for (let i = 0; i < texto.length; i += 2) {
+        let quantidade = parseInt(texto[i], 10);
+        let numero = texto[i + 1];
+
+        if (numero === '1') {
+            contagem += quantidade;
+        }
+    }
+
+
+    //adicionar marcadores restantes
+    let aulas_adicionadas = resultado.replace(/\s+/g, '').split('');
+    let pares_faltas = faltas / 2
+
+    let restantes = (aulas - aulas_adicionadas.length) / aulas_dia;
+    for (let i = 0; i < restantes; i++) {
+
+        if(i < (restantes - (pares_faltas - contagem))){
+            resultado += indice[aulas_dia][0];
+        } else {
+            resultado += indice[aulas_dia][1];
+        }
+    }
+
+    if (aulas_dia == 2) {
 
         function Separar(str) {
             let resultado = '';
@@ -63,7 +91,7 @@ export function ConverteEntrada(chave) {
         return Separar(resultado);
     }
 
-    if (xx == 3) {
+    if (aulas_dia == 3) {
 
         function Separar(str) {
             let resultado = '';
@@ -78,5 +106,5 @@ export function ConverteEntrada(chave) {
 
 
 
-    
+
 }
