@@ -1,14 +1,13 @@
+import { AulasFalta } from './biblioteca.js';
+
 export function ConverteEntrada(chave, horas) {
 
+    //Variáveis
     let aulas = (horas * 60) / 50 //72
     let faltas = (aulas * 25) / 100; //18
-
     let ch = chave[0].split('');
-
     let aulas_dia = Number(ch[0]) //aula no dia
-
-    let texto = chave[1]
-
+    let texto = chave[1];
     let resultado = '';
 
     const map1 = {
@@ -51,19 +50,6 @@ export function ConverteEntrada(chave, horas) {
         }
     };
 
-   
-    //contagem aulas que já faltou.
-    let contagem = 0;
-    for (let i = 0; i < texto.length; i += 2) {
-        let quantidade = parseInt(texto[i], 10);
-        let numero = texto[i + 1];
-
-        if (numero === '1') {
-            contagem += quantidade;
-        }
-    }
-
-
     //adicionar marcadores restantes
     let aulas_adicionadas = resultado.replace(/\s+/g, '').split('');
     let pares_faltas = faltas / 2
@@ -71,40 +57,23 @@ export function ConverteEntrada(chave, horas) {
     let restantes = (aulas - aulas_adicionadas.length) / aulas_dia;
     for (let i = 0; i < restantes; i++) {
 
-        if(i < (restantes - (pares_faltas - contagem))){
+        if(i < (restantes - (pares_faltas - AulasFalta(texto)))){
             resultado += indice[aulas_dia][0];
         } else {
             resultado += indice[aulas_dia][1];
         }
     }
 
-    if (aulas_dia == 2) {
-
-        function Separar(str) {
-            let resultado = '';
-            for (let i = 0; i < str.length; i += 2) {
-                resultado += str.substr(i, 2) + ' ';
-            }
-            return resultado.trim();
+    function Separar(str, k) {
+        let resultado = '';
+        for (let i = 0; i < str.length; i += k) {
+            resultado += str.substr(i, k) + ' ';
         }
-
-        return Separar(resultado);
+        return resultado.trim();
     }
 
-    if (aulas_dia == 3) {
+    if (aulas_dia == 2) return Separar(resultado, 2);
 
-        function Separar(str) {
-            let resultado = '';
-            for (let i = 0; i < str.length; i += 3) {
-                resultado += str.substr(i, 3) + ' ';
-            }
-            return resultado.trim();
-        }
-
-        return Separar(resultado);
-    }
-
-
-
+    if (aulas_dia == 3) return Separar(resultado, 3);
 
 }
