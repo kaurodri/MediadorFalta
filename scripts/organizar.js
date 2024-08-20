@@ -1,7 +1,7 @@
-export function organizarMarcadores(texto, Dias) {
+export function organizarMarcadores(texto, dias) {
     let words = texto.split(' ');
 
-    let aulaSemana = Dias - 1;
+    let aulaSemana = dias - 1;
     
     //recria o conteúdo com <span> e adiciona quebra de linha a cada quatro palavras.
     let conf = [[1, 3],[2, 4], [3, 6]]; //[aula na semana, colunas]

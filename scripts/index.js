@@ -11,14 +11,14 @@ export function Simular() {
         Number(conf[1]),
         Number(conf[2])
     ]
-    let [numeros, horas, aulasDia, Dias] = entrada;
+    let [numeros, horas, aulasDia, dias] = entrada;
     let texto = ConverteEntrada(numeros, horas, aulasDia);
-    let marcadores = organizarMarcadores(texto, Dias);
-    DesenhaMarcadores(texto, Dias, marcadores);
+    let marcadores = organizarMarcadores(texto, dias);
+    DesenhaMarcadores(texto, dias, marcadores);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const entradaElement = document.getElementById('entrada');
-    entradaElement.addEventListener('change', Simular);
-    Simular(); //executa a função ao carregar a página inicialmente.
+    const entrada = document.getElementById('entrada');
+    entrada.addEventListener('change', Simular);
+    Simular();
 });
