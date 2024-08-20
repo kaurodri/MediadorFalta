@@ -4,12 +4,12 @@ import { DesenhaMarcadores } from './marcadores.js';
 
 export function Simular() {
     let input = document.getElementById('entrada').value;
-    let xx = input.split('|')[0].split('-');
+    let conf = input.split('|')[0].split('-');
     let entrada = [
         input.split('|')[1],
-        Number(xx[0]),
-        Number(xx[1]),
-        Number(xx[2])
+        Number(conf[0]),
+        Number(conf[1]),
+        Number(conf[2])
     ]
     let [numeros, horas, aulasDia, Dias] = entrada;
     let texto = ConverteEntrada(numeros, horas, aulasDia);
