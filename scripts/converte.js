@@ -1,15 +1,10 @@
 import { AulasFalta } from './biblioteca.js';
 
-export function ConverteEntrada(chave, horas) {
+export function ConverteEntrada(texto, horas, aulasDia) {
 
     //Variáveis
     let aulas = (horas * 60) / 50;
     let faltas = Math.floor((aulas * 25) / 100);
-
-    let ch = chave[0].split('-');
-
-    let aulas_dia = Number(ch[1]) //aula no dia
-    let texto = chave[1];
     let resultado = '';
 
     const map1 = {
@@ -46,10 +41,10 @@ export function ConverteEntrada(chave, horas) {
         if (par.length === 2) { //verifica se temos um par completo.
             let num = parseInt(par.charAt(0));
             let char = par.charAt(1);
-            if (indice[aulas_dia][char]) {
+            if (indice[aulasDia][char]) {
                 //repete o símbolo 'num' vezes e adiciona ao resultado.
                 for (let j = 0; j < num; j++) {
-                    resultado += indice[aulas_dia][char];
+                    resultado += indice[aulasDia][char];
                 }
             }
         }
@@ -57,15 +52,15 @@ export function ConverteEntrada(chave, horas) {
 
     //adicionar marcadores restantes
     let aulas_adicionadas = resultado.replace(/\s+/g, '').split('');
-    let pares_faltas = Math.floor(faltas / aulas_dia);
+    let pares_faltas = Math.floor(faltas / aulasDia);
 
-    let restantes = (aulas - aulas_adicionadas.length) / aulas_dia;
+    let restantes = (aulas - aulas_adicionadas.length) / aulasDia;
     for (let i = 0; i < restantes; i++) {
 
         if(i < (restantes - (pares_faltas - AulasFalta(texto)))){
-            resultado += indice[aulas_dia][0];
+            resultado += indice[aulasDia][0];
         } else {
-            resultado += indice[aulas_dia][4];
+            resultado += indice[aulasDia][4];
         }
     }
     //45 x 60 = 54 aulas  //pode faltar 13 dias
@@ -78,8 +73,8 @@ export function ConverteEntrada(chave, horas) {
         return resultado.trim();
     }
 
-    if (aulas_dia == 2) return Separar(resultado, 2);
+    if (aulasDia == 2) return Separar(resultado, 2);
 
-    if (aulas_dia == 3) return Separar(resultado, 3);
+    if (aulasDia == 3) return Separar(resultado, 3);
 
 }

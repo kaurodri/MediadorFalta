@@ -1,13 +1,10 @@
-export function DesenhaMarcadores(texto, chave, marcadores) {
-
-    let ch = chave[0].split('-');
-    let aulaSemana = Number(ch[2]);
+export function DesenhaMarcadores(texto, Dias, marcadores) {
 
     let words = texto.split(' ');
     const textElement = document.getElementById('text');
 
     let conf = [[1, 3],[2, 4], [3, 6]];
-    let use = conf[aulaSemana-1];
+    let use = conf[Dias-1];
     
     let formattedText = '';
     for (let i = 0; i < words.length; i++) {
@@ -28,7 +25,7 @@ export function DesenhaMarcadores(texto, chave, marcadores) {
         const reg = /<span>.*<\/span>/g;
 
         //divisória de aulas por semana
-        if (i % aulaSemana === 0) {
+        if (i % Dias === 0) {
             wordSpan = wordSpan.replace('<span>', 'ㅤ<span>');
         }
         
