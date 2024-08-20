@@ -3,10 +3,12 @@ import { AulasFalta } from './biblioteca.js';
 export function ConverteEntrada(chave, horas) {
 
     //Variáveis
-    let aulas = (horas * 60) / 50 //72
-    let faltas = (aulas * 25) / 100; //18
-    let ch = chave[0].split('');
-    let aulas_dia = Number(ch[0]) //aula no dia
+    let aulas = (horas * 60) / 50;
+    let faltas = Math.floor((aulas * 25) / 100);
+
+    let ch = chave[0].split('-');
+
+    let aulas_dia = Number(ch[1]) //aula no dia
     let texto = chave[1];
     let resultado = '';
 
@@ -14,17 +16,20 @@ export function ConverteEntrada(chave, horas) {
         '0': '☐',
         '1': '☒',
         '2': '☑',
-        '3': '◫'
+        '3': '◫',
+        '4': '◪'
     }, map2 = {
         '0': '☐☐',
         '1': '☒☒',
         '2': '☑☑',
-        '3': '☐◫'
+        '3': '☐◫',
+        '4': '☐◪'
     }, map3 = {
         '0': '☐☐☐',
         '1': '☒☒☒',
         '2': '☑☑☑',
-        '3': '☐◫◫'
+        '3': '☐◫◫',
+        '4': '☐◪◪'
     };
 
     const indice = {
@@ -52,7 +57,7 @@ export function ConverteEntrada(chave, horas) {
 
     //adicionar marcadores restantes
     let aulas_adicionadas = resultado.replace(/\s+/g, '').split('');
-    let pares_faltas = faltas / 2
+    let pares_faltas = Math.floor(faltas / aulas_dia);
 
     let restantes = (aulas - aulas_adicionadas.length) / aulas_dia;
     for (let i = 0; i < restantes; i++) {
@@ -60,9 +65,10 @@ export function ConverteEntrada(chave, horas) {
         if(i < (restantes - (pares_faltas - AulasFalta(texto)))){
             resultado += indice[aulas_dia][0];
         } else {
-            resultado += indice[aulas_dia][1];
+            resultado += indice[aulas_dia][4];
         }
     }
+    //45 x 60 = 54 aulas  //pode faltar 13 dias
 
     function Separar(str, k) {
         let resultado = '';

@@ -1,6 +1,8 @@
 export function DesenhaMarcadores(texto, chave, marcadores) {
 
-    let aulaSemana = Number(chave[0][1]);
+    let ch = chave[0].split('-');
+    let aulaSemana = Number(ch[2]);
+
     let words = texto.split(' ');
     const textElement = document.getElementById('text');
 
@@ -16,7 +18,9 @@ export function DesenhaMarcadores(texto, chave, marcadores) {
             '☐': { cor: '' },
             '☒': { cor: 'red' },
             '☑': { cor: 'green' },
-            '◫': { cor: 'blue' }
+            '◫': { cor: 'blue' },
+            '◒': { cor: 'yellow' },
+            '◪': { cor: 'yellow' }
         };
 
         let cores = Mapeamento[words[i].split('')[1]].cor

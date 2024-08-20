@@ -3,9 +3,11 @@ import { organizarMarcadores } from './organizar.js';
 import { DesenhaMarcadores } from './marcadores.js';
 
 export function Simular() {
-    let horas = 60;
+    
     let entrada = document.getElementById('entrada').value;
-    let chave = entrada.split('-');
+    let chave = entrada.split('|');
+
+    let horas = Number(chave[0].split('-')[0]);
 
     let texto = ConverteEntrada(chave, horas)
 
