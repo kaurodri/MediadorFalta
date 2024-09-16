@@ -32,6 +32,20 @@ body {
     padding: 10px;
 }
 
+.box2 p{
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+.campo{
+    display: flex;
+    align-items: center;
+}
+
+#horas{
+    width: 30px;
+    height: 20px;
+}
 .center {
     margin-left: 30px;
     margin-top: 40px;

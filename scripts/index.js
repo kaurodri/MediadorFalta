@@ -15,6 +15,18 @@ export function Simular() {
     let texto = ConverteEntrada(numeros, horas, aulasDia);
     let marcadores = organizarMarcadores(texto, dias);
     DesenhaMarcadores(texto, dias, marcadores);
+
+    
+    {
+        let horasElemento = document.getElementById('horas');
+        horasElemento.value = horas;
+    }
+
+    {
+        let horasElemento = document.getElementById('horas');
+    }
+
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {
