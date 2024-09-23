@@ -16,26 +16,44 @@ export function Simular() {
     let marcadores = organizarMarcadores(texto, dias);
     DesenhaMarcadores(texto, dias, marcadores);
 
-    {
-        let horasElemento = document.getElementById('horas');
-        horasElemento.value = horas;
+    { //Mudar elementos
+        document.getElementById('horas').value = horas;
+        document.getElementById('diaAula').value = aulasDia;
+        document.getElementById('diaSemana').value = dias;
     }
 
 }
 
-export function Horas() {
+export function Modificar() {
+    // TODO: Tentar ver uma forma de distribuir melhor as variáveis.
     let entradaElemento = document.getElementById('entrada');
     let horas = document.getElementById('horas').value;
+    let dia = document.getElementById('diaAula').value;
+    let Semana = document.getElementById('diaSemana').value;
     let entrada = entradaElemento.value;
-    let string = horas + entrada.substr(2);
-    entradaElemento.value = string
+    let [cargaHora, diaAula, diaSemana, restante] = entrada.split(/[-|]/);
+    //modificar
+    cargaHora = horas;
+    diaAula = dia;
+    diaSemana = Semana;
+    //string
+    let novaString = `${cargaHora}-${diaAula}-${diaSemana}|${restante}`;
+    entradaElemento.value = novaString
     Simular();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    let elementos = [document.getElementById('entrada'), document.getElementById('horas')];
-    let [entrada, horas] = elementos;
+    // TODO: Padronizar nome das variáveis.
+    const elementos = [
+        document.getElementById('entrada'),
+        document.getElementById('horas'),
+        document.getElementById('diaAula'),
+        document.getElementById('diaSemana')
+    ];
+    let [entrada, horas, aulasdias, diasemana] = elementos;
     entrada.addEventListener('change', Simular);
-    horas.addEventListener('change', Horas);
+    horas.addEventListener('change', Modificar);
+    aulasdias.addEventListener('change', Modificar);
+    diasemana.addEventListener('change', Modificar);
     Simular();
 });
