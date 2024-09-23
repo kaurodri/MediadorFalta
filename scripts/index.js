@@ -1,8 +1,12 @@
+// ! Importante: Código que será usado para o Organizador de Disciplinas
+// ! HTML usado meramente como exemplo.
+
 import { ConverteEntrada } from './converte.js';
 import { organizarMarcadores } from './organizar.js';
 import { DesenhaMarcadores } from './marcadores.js';
 
 export function Simular() {
+    // TODO: Fazer alteração de marcadores usando mouse click.
     let input = document.getElementById('entrada').value;
     let conf = input.split('|')[0].split('-');
     let entrada = [
