@@ -10,27 +10,32 @@ export function Simular() {
         Number(conf[0]),
         Number(conf[1]),
         Number(conf[2])
-    ]
+    ];
     let [numeros, horas, aulasDia, dias] = entrada;
     let texto = ConverteEntrada(numeros, horas, aulasDia);
     let marcadores = organizarMarcadores(texto, dias);
     DesenhaMarcadores(texto, dias, marcadores);
 
-    
     {
         let horasElemento = document.getElementById('horas');
         horasElemento.value = horas;
     }
 
-    {
-        let horasElemento = document.getElementById('horas');
-    }
+}
 
-
+export function Horas() {
+    let entradaElemento = document.getElementById('entrada');
+    let horas = document.getElementById('horas').value;
+    let entrada = entradaElemento.value;
+    let string = horas + entrada.substr(2);
+    entradaElemento.value = string
+    Simular();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const entrada = document.getElementById('entrada');
+    let elementos = [document.getElementById('entrada'), document.getElementById('horas')];
+    let [entrada, horas] = elementos;
     entrada.addEventListener('change', Simular);
+    horas.addEventListener('change', Horas);
     Simular();
 });
