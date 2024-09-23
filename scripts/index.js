@@ -9,7 +9,7 @@ export function Simular() {
     // TODO: Fazer alteração de marcadores usando mouse click.
     let input = document.getElementById('entrada').value;
     let conf = input.split('|')[0].split('-');
-    let entrada = [
+    const entrada = [
         input.split('|')[1],
         Number(conf[0]),
         Number(conf[1]),
