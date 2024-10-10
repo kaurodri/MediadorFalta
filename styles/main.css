@@ -73,6 +73,11 @@ body {
         /* border: 1px solid red; */
         margin-top: 0;
     }
+
+    .painel p{
+        transform: scale(1.1);
+    }
+
     .conf{
         margin-left: 10px;
         /* border: 1px solid red; */
