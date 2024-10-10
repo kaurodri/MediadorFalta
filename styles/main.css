@@ -83,6 +83,14 @@ body {
         height: 60px;
     }
 
+    .op {
+        width: 135px;
+    }
+
+    .op p{
+        width: 80px;
+    }
+
     .box2 p{
         font-size: 17px;
     }
