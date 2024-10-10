@@ -55,9 +55,6 @@ body {
 
 .painel{
     margin-left: 30px;
-    margin-top: 40px;
-
-    /* border: 1px solid red; */
 }
 
 .conf{
@@ -67,8 +64,24 @@ body {
 
 @media screen and (max-width: 1005px) {
     .center{
+        transform: scale(0.7);
+    }
+    .conf{
+        margin-left: 10px;
         /* border: 1px solid red; */
-        transform: scale(0.8);
+    }
+
+    .box2 {
+        display: flex;
+        height: 60px;
+    }
+
+    .box2 p{
+        font-size: 20px;
+    }
+
+    #entrada {
+        font-size: 15px;
     }
 
 }
