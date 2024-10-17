@@ -6,5 +6,5 @@
 
 Código que será usado para o Organizador de Disciplinas.
 
-Projeto em Javascript [ HTML usado meramente como exemplo ]
+Projeto em Javascript ( neste projeto o HTML usado será meramente como exemplo )
 
